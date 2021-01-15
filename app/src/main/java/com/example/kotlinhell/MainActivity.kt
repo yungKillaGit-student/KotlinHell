@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
             R.id.showFirstLab -> {
                 intent = Intent(this, HelloWorld::class.java)
             }
+            R.id.showSecondLab -> {
+                intent = Intent(this, QuadraticEquation::class.java)
+            }
         }
 
         startActivity(intent)
