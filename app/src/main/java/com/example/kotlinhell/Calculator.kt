@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 class Calculator : AppCompatActivity() {
     var currentOperation = ""
@@ -23,11 +26,15 @@ class Calculator : AppCompatActivity() {
         setContentView(R.layout.activity_calculator)
     }
 
-    fun formatNumber(number: Double): Number {
+    fun parseDoubleWithComma(value: String): Double {
+        return value.replace(",", ".").toDouble()
+    }
+
+    fun formatNumber(number: Double): String {
         if (number % 1 == 0.0) {
-            return number.toInt();
+            return number.toInt().toString();
         }
-        return number;
+        return number.toString().replace(".", ",");
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -95,12 +102,12 @@ class Calculator : AppCompatActivity() {
 
         if (pressedButton.id == R.id.equalityButton) {
             if (this.rightOperand == 0.0) {
-                this.rightOperand = currentOutput.toDouble()
+                this.rightOperand = parseDoubleWithComma(currentOutput)
             }
         }
 
         if (this.currentOperation != "") {
-            var rightNumber = currentOutput.toDouble()
+            var rightNumber = parseDoubleWithComma(currentOutput)
             if (this.rightOperand != 0.0) {
                 rightNumber = this.rightOperand
             }
@@ -109,32 +116,32 @@ class Calculator : AppCompatActivity() {
                 when (this.currentOperation) {
                     "+" -> {
                         val result = formatNumber(this.leftOperand + rightNumber)
-                        this.leftOperand = result.toDouble()
-                        output.text = result.toString()
+                        this.leftOperand = parseDoubleWithComma(result)
+                        output.text = result
                     }
                     "-" -> {
                         val result = formatNumber(this.leftOperand - rightNumber)
-                        this.leftOperand = result.toDouble()
-                        output.text = result.toString()
+                        this.leftOperand = parseDoubleWithComma(result)
+                        output.text = result
                     }
                     "*" -> {
                         val result = formatNumber(this.leftOperand * rightNumber)
-                        this.leftOperand = result.toDouble()
-                        output.text = result.toString()
+                        this.leftOperand = parseDoubleWithComma(result)
+                        output.text = result
                     }
                     "/" -> {
                         val result = formatNumber(this.leftOperand / rightNumber)
-                        this.leftOperand = result.toDouble()
-                        output.text = result.toString()
+                        this.leftOperand = parseDoubleWithComma(result)
+                        output.text = result
                     }
                 }
             }
             else {
-                this.leftOperand = currentOutput.toDouble()
+                this.leftOperand = parseDoubleWithComma(currentOutput)
             }
         }
         else {
-            this.leftOperand = currentOutput.toDouble()
+            this.leftOperand = parseDoubleWithComma(currentOutput)
         }
 
         if (pressedButton.id != R.id.equalityButton) {
@@ -142,34 +149,6 @@ class Calculator : AppCompatActivity() {
         }
 
         this.isLastButtonEquality = pressedButton.id == R.id.equalityButton
-        /*this.isActionPressed = true;
-        val pressedButton = view as Button
-
-        val output = findViewById<TextView>(R.id.calculatorOutput)
-        val currentOutput = output.text.toString()
-
-        if (this.currentOperation == "") {
-            this.leftOperand = currentOutput.toDouble()
-        }
-        else {
-            val rightNumber = currentOutput.toDouble()
-            when (this.currentOperation) {
-                "/" -> output.text = formatNumber(this.leftOperand / rightNumber).toString()
-                "*" -> output.text = formatNumber(this.leftOperand * rightNumber).toString()
-                "-" -> output.text = formatNumber(this.leftOperand - rightNumber).toString()
-                "+" -> output.text = formatNumber(this.leftOperand + rightNumber).toString()
-            }
-        }
-
-        val operationSymbol = pressedButton.text.toString();
-        if (operationSymbol != "=") {
-            this.currentOperation = pressedButton.text.toString();
-        }
-        else {
-            if (rightOperand == 0.0) {
-                rightOperand = currentOutput.toDouble()
-            }
-        }*/
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
             R.id.showThirdLab -> {
                 intent = Intent(this, Calculator::class.java)
             }
+            R.id.showFourthLab -> {
+                intent = Intent(this, ToDo::class.java)
+            }
         }
 
         startActivity(intent)

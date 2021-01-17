@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861428246458",
+    "project_id": "kotlin-hell",
+    "storage_bucket": "kotlin-hell.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861428246458:android:a98fc1e7f5c3818a031f83",
+        "android_client_info": {
+          "package_name": "com.example.kotlinhell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861428246458-et5t0m3m8gi5d9sb1clbcnrga75pmmgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATm1VbvL9_2jjI9EHO6iMtdwtuykqLifI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861428246458-et5t0m3m8gi5d9sb1clbcnrga75pmmgg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
